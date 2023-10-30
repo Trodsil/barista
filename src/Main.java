@@ -10,7 +10,7 @@ public class Main {
         Cliente cliente3 = new Cliente(35,"Congo");
         cliente1.start();
         cliente2.start();
-        cliente3.start();
+        cliente3.start();//
 
     }
 }
