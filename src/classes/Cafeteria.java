@@ -1,19 +1,26 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Cafeteria extends Thread{
-    static List<Cliente> fila = new ArrayList<>();
-    private List<Barista> barra = new ArrayList<>();
+public class Cafeteria{
 
-    @Override
-    public void run() {
-        if(!fila.isEmpty()){
-            for(Barista barista : this.barra){
-                barista.setCliente(fila.get(0));
+    public static List<Cliente> fila = new ArrayList<>();
+
+    private static List<Barista> baristas = Arrays.asList(new Barista(),new Barista(), new Barista());
+
+    public static void atender() {
+        for (Barista barista : baristas) {
+            if (!barista.isOcupada() && !fila.isEmpty()) {
+                Cliente cliente = fila.get(0);
+                fila.remove(0);
+                cliente.setEstado("atendido");
+                barista.setCliente(cliente);
                 barista.start();
             }
         }
     }
+
+
 }
