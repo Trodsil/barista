@@ -1,23 +1,36 @@
 package classes;
 
 public class Barista extends Thread{
-    private final int tiempopreparacion = 10;
 
+    private boolean disponible = true;
+    private Cafeteria cafeteria;
     private Cliente cliente;
-
+    public Barista(Cafeteria cafeteria) {
+        this.cafeteria = cafeteria;
+    }
 
     @Override
     public void run() {
         try {
-            this.cliente.setAtendido(true);
-            Thread.sleep(this.tiempopreparacion*1000);
-            System.out.println("Cafe de "+this.cliente.getName());
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        cliente.setAtendido(true);
+        System.out.println(cliente.getName()+" ha sido servido");
+        this.disponible = true;
+        cafeteria.equipoDisponible();
     }
 
-    public void setCliente(Cliente cliente){
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 }
