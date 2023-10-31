@@ -16,21 +16,20 @@ public class Cliente extends Thread{
     @Override
     public void run() {
         try {
-            Thread.sleep((long) ((Math.random()*15)*1000));
-            System.out.println(this.nombre+" se ha puesto a la fila");
-            cafeteria.atender();
-            esperar();
+            Thread.sleep((long) (Math.random()*10)*1000);
+            System.out.println(this.nombre+" se ha puesto a la cola");
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void esperar() throws InterruptedException {
-        Thread.sleep(this.tiempoespera*1000L);
-        if(!this.atendido){
-            System.out.println(this.nombre+" se ha ido");
-            cafeteria.getFila().remove(this);
-        }
+
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setAtendido(boolean atendido) {

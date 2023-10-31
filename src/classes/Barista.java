@@ -22,6 +22,11 @@ public class Barista extends Thread{
         cafeteria.equipoDisponible();
     }
 
+    public void prepararCafe(Cliente cliente) throws InterruptedException {
+        Thread.sleep(5000);
+        System.out.println("Café servido a "+cliente.getNombre());
+    }
+
     public boolean isDisponible() {
         return disponible;
     }
