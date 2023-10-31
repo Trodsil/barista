@@ -34,6 +34,6 @@ public class Cliente extends Thread{
     }
 
     public void setAtendido(boolean atendido) {
-        this.atendido = atendido;
+        this.atendido = atendido;//
     }
 }
