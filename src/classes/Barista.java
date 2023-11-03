@@ -24,6 +24,7 @@ public class Barista extends Thread{
     public synchronized void prepararCafe(Cliente cliente) throws InterruptedException {
         this.disponible = false;
         if(cliente.isAtendido()){
+            System.out.println(cliente.getNombre()+" esta siendo atendido");
             cliente.setAtendido(false);
             Thread.sleep(15000);
             System.out.println("Café servido a "+cliente.getNombre());
